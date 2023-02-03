@@ -1,4 +1,5 @@
 function VacationRental({bnb, addToCart}) {
+  console.log(bnb)
   return (
     <div>
       <h3>{bnb.title}</h3>
