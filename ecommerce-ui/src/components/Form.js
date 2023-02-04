@@ -1,10 +1,11 @@
+import classes from "./Form.module.css"
 import { useState } from "react"
 
 function Form({userInput}) {
   let [title, setTitle] = useState('')
   let [city, setCity] = useState('')
   let [country, setCountry] = useState('')
-  let [cost, setCost] = useState(0)
+  let [cost, setCost] = useState('')
   let [image, setImage] = useState('')
   function handleTitle(e) {
     setTitle(e.target.value)
@@ -24,16 +25,19 @@ function Form({userInput}) {
   function handleSubmit(e) {
     e.preventDefault()
     let userInputObj = {
-      id: Date.now(),
+      id: Date.now().toString(),
       title,
       location: {
         city,
         country
       },
       payment: {
-        cost
+        cost: parseInt(cost)
       },
-      image
+      image,
+      rating: {
+        stars: 4.5
+      }
     }
     userInput(userInputObj)
     setTitle('')
@@ -42,31 +46,36 @@ function Form({userInput}) {
     setCost('')
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input id="title" type="text" value={title} onChange={handleTitle}></input>
-        </div>
-        <div>
-          <label htmlFor="city">City:</label>
-          <input id="city" type="text" value={city} onChange={handleCity}></input>
-        </div>
-        <div>
-          <label htmlFor="country">Country:</label>
-          <input id="country" type="text" value={country} onChange={handleCountry}></input>
-        </div>
-        <div>
-          <label htmlFor="cost">Cost:</label>
-          <input id="cost" type="number" value={cost} onChange={handleCost}></input>
-        </div>
-        <div>
-          <label htmlFor="picture">Select image:</label>
-          <input id="picture" type="file" onChange={handleImage}></input>
-        </div>
+    <form className={classes["user-input-form"]} onSubmit={handleSubmit}>
+      <div className={classes["form-item"]}>
+        <label htmlFor="title">Title:</label>
+        <br />
+        <input id="title" type="text" value={title} onChange={handleTitle} required></input>
+      </div>
+      <div className={classes["form-item"]}>
+        <label htmlFor="city">Location:</label>
+        <br />
+        <input id="city" type="text" value={city} onChange={handleCity} required></input>
+      </div>
+      <div className={classes["form-item"]}>
+        <label htmlFor="country">Country:</label>
+        <br />
+        <input id="country" type="text" value={country} onChange={handleCountry} required></input>
+      </div>
+      <div className={classes["form-item"]}>
+        <label htmlFor="cost">Cost:</label>
+        <br />
+        <input id="cost" type="number" value={cost} onChange={handleCost} required></input>
+      </div>
+      <div className={classes["form-item"]}>
+        <label htmlFor="picture">Select image:</label>
+        <br />
+        <input id="picture" type="file" onChange={handleImage} required></input>
+      </div>
+      <div className={classes["form-item"]}>
         <button>Save</button>
-      </form>
-    </div>
+      </div>
+    </form>
   )
 }
 
