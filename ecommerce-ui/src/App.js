@@ -1,3 +1,4 @@
+import classes from "./App.module.css"
 import { useState } from "react"
 import bnbData from "./data/bnbs.json"
 import VacationRental from "./components/VacationRental"
@@ -18,12 +19,14 @@ function App() {
     let newArr = cart.filter(item => item.id !== bnbId)
     setCart(newArr)
   }
-  let resultVacationRental = bnbs.map(item => <VacationRental key={item.id} bnb={item} addToCart={handleAddToCart} />)
+  let resultVacationRental = bnbs.map(item => <VacationRental key={item.id} bnb={item} manageCart={handleAddToCart} action="Add to Cart" />)
   return (
     <div>
       <Form userInput={handleUserInput} />
-      {resultVacationRental}
-      <ShoppingCart bnbCart={cart} removeFromCart={handleRemoveFromCart} />
+      <div className={classes["grid-container"]}>
+        {resultVacationRental}
+      </div>
+      <ShoppingCart bnbCart={cart} manageCart={handleRemoveFromCart} />
     </div>
   );
 }

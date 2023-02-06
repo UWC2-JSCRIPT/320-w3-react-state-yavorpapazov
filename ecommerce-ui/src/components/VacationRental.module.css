@@ -3,6 +3,7 @@
     width: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .image-div {
     border: 3px solid blue;
@@ -18,19 +19,28 @@
 .location {
     border: 3px solid red;
     display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
 }
-.stars {
-    border: 3px solid blue;
+.location > h3 {
+    border: 3px solid green;
 }
 .container > h3 {
     border: 3px solid purple;
-    padding: 5px;
+    padding: 5px 0;
 }
 .cost {
     border: 3px solid green;
     display: flex;
     justify-content: space-between;
+    padding: 5px 0;
 }
 .cost > h3, .cost > div {
     border: 3px solid blue;
+}
+.cost button {
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
 }
