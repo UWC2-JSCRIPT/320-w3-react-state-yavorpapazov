@@ -1,8 +1,27 @@
 .user-input-form {
     border: 3px solid black;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(6, 200px);
+    grid-auto-rows: 60px;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .form-item {
     border: 3px solid red;
+}
+.form-item input {
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 5px;
+}
+.form-item button, .form-item input::file-selector-button {
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+}
+@media (max-width: 1200px) {
+    .user-input-form {
+        grid-template-columns: repeat(2, 200px);
+    }
 }
