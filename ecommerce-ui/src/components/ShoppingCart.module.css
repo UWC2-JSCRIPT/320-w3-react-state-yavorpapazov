@@ -1,0 +1,14 @@
+.grid-container {
+    border: 3px solid purple;
+    display: grid;
+    grid-template-columns: 300px;
+    grid-auto-rows: auto;
+    justify-content: center;
+    gap: 30px;
+}
+.grid-container button {
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+}

@@ -8,6 +8,7 @@ import Form from "./components/Form"
 function App() {
   let [cart, setCart] = useState([])
   let [bnbs, setBnbs] = useState(bnbData)
+  let [isShoppingCartDisplayed, setIsShoppingCartDisplayed] = useState(false)
   function handleUserInput(userData) {
     setBnbs(prevState => [...prevState, userData])
   }
@@ -19,14 +20,23 @@ function App() {
     let newArr = cart.filter(item => item.id !== bnbId)
     setCart(newArr)
   }
+  function handleCloseCart() {
+    setIsShoppingCartDisplayed(false)
+  }
   let resultVacationRental = bnbs.map(item => <VacationRental key={item.id} bnb={item} manageCart={handleAddToCart} action="Add to Cart" />)
   return (
     <div>
+      {isShoppingCartDisplayed && <div className={classes.backdrop} />}
       <Form userInput={handleUserInput} />
+      <button onClick={() => setIsShoppingCartDisplayed(true)}>Shopping Cart</button>
+      <h3>Shopping cart items: {cart.length}</h3>
       <div className={classes["grid-container"]}>
         {resultVacationRental}
       </div>
-      <ShoppingCart bnbCart={cart} manageCart={handleRemoveFromCart} />
+      {isShoppingCartDisplayed && 
+      <div className={classes.modal}>
+        <ShoppingCart bnbCart={cart} manageCart={handleRemoveFromCart} closeCart={handleCloseCart} />
+      </div>}
     </div>
   );
 }
