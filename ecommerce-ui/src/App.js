@@ -25,11 +25,13 @@ function App() {
   }
   let resultVacationRental = bnbs.map(item => <VacationRental key={item.id} bnb={item} manageCart={handleAddToCart} action="Add to Cart" />)
   return (
-    <div>
+    <div className={classes.container}>
       {isShoppingCartDisplayed && <div className={classes.backdrop} />}
       <Form userInput={handleUserInput} />
-      <button onClick={() => setIsShoppingCartDisplayed(true)}>Shopping Cart</button>
-      <h3>Shopping cart items: {cart.length}</h3>
+      <div>
+        <h3>Shopping cart items: {cart.length}</h3>
+        <button onClick={() => setIsShoppingCartDisplayed(true)}>Shopping Cart</button>
+      </div>
       <div className={classes["grid-container"]}>
         {resultVacationRental}
       </div>
