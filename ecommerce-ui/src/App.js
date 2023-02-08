@@ -14,6 +14,11 @@ function App() {
   }
   function handleAddToCart(bnbId) {
     let itemToAdd = bnbs.find(item => item.id === bnbId)
+    let alreadyExist = cart.some(item => item.id === itemToAdd.id)
+    if(alreadyExist) {
+      alert('The item is already in the cart.')
+      return
+    }
     setCart(prevState => [...prevState, itemToAdd])
   }
   function handleRemoveFromCart(bnbId) {
@@ -30,7 +35,7 @@ function App() {
       <Form userInput={handleUserInput} />
       <div>
         <h3>Shopping cart items: {cart.length}</h3>
-        <button onClick={() => setIsShoppingCartDisplayed(true)}>Shopping Cart</button>
+        <button className={classes.btn} onClick={() => setIsShoppingCartDisplayed(true)}>Shopping Cart</button>
       </div>
       <div className={classes["grid-container"]}>
         {resultVacationRental}

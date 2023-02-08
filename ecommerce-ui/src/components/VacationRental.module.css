@@ -32,4 +32,9 @@
     width: 100px;
     height: 30px;
     font-weight: bold;
+    cursor: pointer;
+}
+.cost button:hover {
+    background-color: darkgray;
+    color: whitesmoke;
 }

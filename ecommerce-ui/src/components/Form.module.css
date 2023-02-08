@@ -22,6 +22,11 @@
     width: 100px;
     height: 30px;
     font-weight: bold;
+    cursor: pointer;
+}
+.form-item button:hover, .form-item input::file-selector-button:hover {
+    background-color: darkgray;
+    color: whitesmoke;
 }
 .form-item button {
     display: block;
