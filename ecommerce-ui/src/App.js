@@ -4,6 +4,7 @@ import bnbData from "./data/bnbs.json"
 import VacationRental from "./components/VacationRental"
 import ShoppingCart from "./components/ShoppingCart"
 import Form from "./components/Form"
+import Button from "./ui/Button"
 
 function App() {
   let [cart, setCart] = useState([])
@@ -34,8 +35,8 @@ function App() {
       {isShoppingCartDisplayed && <div className={classes.backdrop} />}
       <Form userInput={handleUserInput} />
       <div>
-        <h3>Shopping cart items: {cart.length}</h3>
-        <button className={classes.btn} onClick={() => setIsShoppingCartDisplayed(true)}>Shopping Cart</button>
+        <h3 className={classes["shopping-cart-h3"]}>Shopping cart items: {cart.length}</h3>
+        <Button onClick={() => setIsShoppingCartDisplayed(true)}>Shopping Cart</Button>
       </div>
       <div className={classes["grid-container"]}>
         {resultVacationRental}

@@ -17,18 +17,18 @@
     height: 30px;
     margin-top: 5px;
 }
-.form-item button, .form-item input::file-selector-button {
+.form-item input::file-selector-button {
     border-radius: 5px;
     width: 100px;
     height: 30px;
     font-weight: bold;
     cursor: pointer;
 }
-.form-item button:hover, .form-item input::file-selector-button:hover {
+.form-item input::file-selector-button:hover {
     background-color: darkgray;
     color: whitesmoke;
 }
-.form-item button {
+.form-item-button {
     display: block;
     margin: 0 0 0 auto;
 }
@@ -36,7 +36,7 @@
     .user-input-form {
         grid-template-columns: repeat(2, 200px);
     }
-    .form-item button {
+    .form-item-button {
         margin: 0 auto 0 0;
     }
 }

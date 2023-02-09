@@ -27,14 +27,3 @@
     justify-content: space-between;
     padding: 5px 0;
 }
-.cost button {
-    border-radius: 5px;
-    width: 100px;
-    height: 30px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.cost button:hover {
-    background-color: darkgray;
-    color: whitesmoke;
-}

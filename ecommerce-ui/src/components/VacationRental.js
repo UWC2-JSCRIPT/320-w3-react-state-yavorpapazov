@@ -1,5 +1,7 @@
 import classes from "./VacationRental.module.css"
 import { AiFillStar } from "react-icons/ai"
+import Button from "../ui/Button"
+import PropTypes from "prop-types"
 
 function VacationRental({bnb, manageCart, action}) {
   return (
@@ -15,11 +17,17 @@ function VacationRental({bnb, manageCart, action}) {
       <div className={classes.cost}>
         <h3>Cost: ${bnb.payment.cost}</h3>
         <div>
-          <button onClick={() => manageCart(bnb.id)}>{action}</button>
+          <Button onClick={() => manageCart(bnb.id)}>{action}</Button>
         </div>
       </div>
     </div>
   )
+}
+
+VacationRental.propTypes = {
+  bnb: PropTypes.object.isRequired,
+  manageCart: PropTypes.func.isRequired,
+  action: PropTypes.string.isRequired
 }
 
 export default VacationRental

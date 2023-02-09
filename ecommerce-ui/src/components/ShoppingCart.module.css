@@ -5,14 +5,3 @@
     justify-content: center;
     gap: 30px;
 }
-.grid-container button {
-    border-radius: 5px;
-    width: 100px;
-    height: 30px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.grid-container button:hover {
-    background-color: darkgray;
-    color: whitesmoke;
-}

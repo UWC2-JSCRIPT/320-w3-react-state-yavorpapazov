@@ -1,5 +1,7 @@
 import classes from "./ShoppingCart.module.css"
 import VacationRental from "./VacationRental"
+import Button from "../ui/Button"
+import PropTypes from "prop-types"
 
 function ShoppingCart({bnbCart, manageCart, closeCart}) {
   let total = 0
@@ -12,10 +14,16 @@ function ShoppingCart({bnbCart, manageCart, closeCart}) {
       {resultShoppingCartItems}
       <h3>Total: ${total}</h3>
       <div>
-        <button onClick={closeCart}>Close</button>
+        <Button onClick={closeCart}>Close</Button>
       </div>
     </div>
   )
+}
+
+ShoppingCart.propTypes = {
+  bnbCart: PropTypes.array.isRequired,
+  manageCart: PropTypes.func.isRequired,
+  closeCart: PropTypes.func.isRequired
 }
 
 export default ShoppingCart

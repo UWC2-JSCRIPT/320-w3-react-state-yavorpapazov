@@ -1,5 +1,7 @@
 import classes from "./Form.module.css"
 import { useState } from "react"
+import Button from "../ui/Button"
+import PropTypes from "prop-types"
 
 function Form({userInput}) {
   let [title, setTitle] = useState('')
@@ -7,6 +9,7 @@ function Form({userInput}) {
   let [country, setCountry] = useState('')
   let [cost, setCost] = useState('')
   let [image, setImage] = useState('')
+  let [imageUrl, setImageUrl] = useState('')
   function handleTitle(e) {
     setTitle(e.target.value)
   }
@@ -20,7 +23,8 @@ function Form({userInput}) {
     setCost(e.target.value)
   }
   function handleImage(e) {
-    setImage(URL.createObjectURL(e.target.files[0]))
+    setImage(e.target.value)
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
   }
   function handleSubmit(e) {
     e.preventDefault()
@@ -34,7 +38,7 @@ function Form({userInput}) {
       payment: {
         cost: parseInt(cost)
       },
-      image,
+      image: imageUrl,
       rating: {
         stars: 4.5
       }
@@ -44,6 +48,7 @@ function Form({userInput}) {
     setCity('')
     setCountry('')
     setCost('')
+    setImage('')
   }
   return (
     <form className={classes["user-input-form"]} onSubmit={handleSubmit}>
@@ -70,13 +75,17 @@ function Form({userInput}) {
       <div className={classes["form-item"]}>
         <label htmlFor="picture">Select image:</label>
         <br />
-        <input id="picture" type="file" onChange={handleImage} required></input>
+        <input id="picture" type="file" value={image} onChange={handleImage} required></input>
       </div>
-      <div className={classes["form-item"]}>
-        <button>Save</button>
+      <div className={classes["form-item-button"]}>
+        <Button>Save</Button>
       </div>
     </form>
   )
+}
+
+Form.propTypes = {
+  userInput: PropTypes.func.isRequired
 }
 
 export default Form
